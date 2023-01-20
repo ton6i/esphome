@@ -1,0 +1,71 @@
+substitutions:
+  device_name: human-presence-1
+
+packages:
+  engineeringmode: !include my_components/ld2410_ts/engineeringmode.yaml
+
+uart:
+  id: uart_bus1
+  tx_pin: TX
+  rx_pin: RX
+  baud_rate: 256000 #115200 #256000 # Change this according to your setting
+  parity: NONE
+  stop_bits: 1
+  debug:
+    direction: BOTH
+    dummy_receiver: false
+    after:
+      delimiter: [0xF8,0xF7,0xF6,0xF5]
+      
+ld2410_ts:
+  id: my_ld2410
+  engineeringmode: false
+  settings: false
+  none_duration: 5
+  max_move_distance : 8
+  max_still_distance: 8
+  g0_move_threshold: 50           #0,00
+  g0_still_threshold: 0 
+  g1_move_threshold: 50           #0,75
+  g1_still_threshold: 0
+  g2_move_threshold: 40           #1,50
+  g2_still_threshold: 40
+  g3_move_threshold: 30           #2,25
+  g3_still_threshold: 40
+  g4_move_threshold: 20           #3,00
+  g4_still_threshold: 30
+  g5_move_threshold: 15           #3,75
+  g5_still_threshold: 30
+  g6_move_threshold: 15           #4,50
+  g6_still_threshold: 20
+  g7_move_threshold: 15           #5,75
+  g7_still_threshold: 20
+  g8_move_threshold: 15           #6,0
+  g8_still_threshold: 20
+  info:
+    name: $device_name info
+
+binary_sensor:
+  - platform: ld2410_ts
+    connected:
+      name : $device_name connected
+      device_class: running     
+    has_target:
+      name : $device_name presence
+    has_moving_target:
+      name : $device_name move
+    has_still_target:
+      name: $device_name still
+
+sensor:
+  - platform: ld2410_ts
+    moving_distance:
+      name : $device_name Move distance (cm)
+    still_distance:
+      name: $device_name Still Distance (cm)
+    moving_energy:
+      name: $device_name Move Energy
+    still_energy:
+      name: $device_name Still Energy
+    detection_distance:
+      name: $device_name Distance Detection

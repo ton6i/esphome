@@ -1,0 +1,40 @@
+
+
+sensor:
+  - platform: ld2410_ts
+    g0_move:
+      name: $device_name G0 move Detection
+    g1_move:
+      name: $device_name G1 move Detection
+    g2_move:
+      name: $device_name G2 move Detection
+    g3_move:
+      name: $device_name G3 move Detection
+    g4_move:
+      name: $device_name G4 move Detection
+    g5_move:
+      name: $device_name G5 move Detection
+    g6_move:
+      name: $device_name G6 move Detection
+    g7_move:
+      name: $device_name G7 move Detection
+    g8_move:
+      name: $device_name G8 move Detection
+    g0_still:
+      name: $device_name G0 still Detection
+    g1_still:
+      name: $device_name G1 still Detection
+    g2_still:
+      name: $device_name G2 still Detection
+    g3_still:
+      name: $device_name G3 still Detection
+    g4_still:
+      name: $device_name G4 still Detection
+    g5_still:
+      name: $device_name G5 still Detection
+    g6_still:
+      name: $device_name G6 still Detection
+    g7_still:
+      name: $device_name G7 still Detection
+    g8_still:
+      name: $device_name G8 still Detection
